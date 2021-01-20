@@ -26,4 +26,17 @@ func main() {
 		log.Fatalln(err)
 	}
 	log.Println("Set up link")
+
+	link, err = netlink.LinkByName("eth0")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	log.Printf("Checking eth0 link:\n%s", link.Attrs().Name, link.Attrs())
+
+	log.Println("Addrs:\n")
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	log.Println(addrs)
 }
